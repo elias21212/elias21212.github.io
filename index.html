@@ -1,10 +1,34 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Meine erste Website</title>
+<title>Kühlschrank Rezept Finder</title>
 </head>
+
 <body>
-<h1>Willkommen auf meiner Website</h1>
-<p>Das ist meine erste selbst erstellte Website.</p>
+
+<h1>Was kann ich mit meinen Zutaten kochen?</h1>
+
+<p>Gib deine Zutaten ein:</p>
+
+<input type="text" id="zutaten" placeholder="z.B. Tomaten, Käse, Pasta">
+<button onclick="rezept()">Rezept suchen</button>
+
+<p id="ergebnis"></p>
+
+<script>
+function rezept() {
+let zutaten = document.getElementById("zutaten").value;
+
+if(zutaten.includes("Tomaten") && zutaten.includes("Pasta")){
+document.getElementById("ergebnis").innerHTML =
+"Du könntest Pasta mit Tomatensauce kochen!";
+}
+else{
+document.getElementById("ergebnis").innerHTML =
+"Ich habe noch kein Rezept dafür, aber ich arbeite daran!";
+}
+}
+</script>
+
 </body>
 </html>
