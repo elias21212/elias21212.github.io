@@ -2,9 +2,11 @@
 function rezept() {
 let zutaten = document.getElementById("zutaten").value.toLowerCase();
 
-if(zutaten.includes("tomaten") && zutaten.includes("pasta")){
+if(zutaten.includes("tomate") || zutaten.includes("tomaten")){
+if(zutaten.includes("pasta")){
 document.getElementById("ergebnis").innerHTML =
 "Rezept: Pasta mit Tomatensauce 🍝";
+}
 }
 
 else if(zutaten.includes("ei") && zutaten.includes("käse")){
