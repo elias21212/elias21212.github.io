@@ -1,9 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Kühlschrank Rezept Finder</title>
+</head>
+<body>
+
+<h1>Was kann ich mit meinen Zutaten kochen?</h1>
+
+<p>Gib deine Zutaten ein (z. B. Tomaten, Pasta):</p>
+<input type="text" id="zutaten" placeholder="Zutaten hier eingeben">
+<button onclick="rezept()">Rezept suchen</button>
+
+<p id="ergebnis"></p>
+
 <script>
 function rezept() {
   let zutaten = document.getElementById("zutaten").value.toLowerCase().trim();
   let ergebnis = document.getElementById("ergebnis");
 
-  // Aufteilen in einzelne Wörter
+  // Zutaten in Wörter aufteilen (Komma oder Leerzeichen)
   let zutatenListe = zutaten.split(/\s*,\s*|\s+/);
 
   if ((zutatenListe.includes("tomate") || zutatenListe.includes("tomaten")) && zutatenListe.includes("pasta")) {
@@ -20,3 +36,6 @@ function rezept() {
   }
 }
 </script>
+
+</body>
+</html>
