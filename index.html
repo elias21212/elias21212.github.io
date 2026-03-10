@@ -1,23 +1,25 @@
 <script>
 function rezept() {
-
 let zutaten = document.getElementById("zutaten").value.toLowerCase();
-let ergebnis = document.getElementById("ergebnis");
 
-if ((zutaten.includes("tomate") || zutaten.includes("tomaten")) && zutaten.includes("pasta")) {
-ergebnis.innerHTML = "Rezept: Pasta mit Tomatensauce 🍝";
+if(zutaten.includes("tomaten") && zutaten.includes("pasta")){
+document.getElementById("ergebnis").innerHTML =
+"Rezept: Pasta mit Tomatensauce 🍝";
 }
 
-else if (zutaten.includes("ei") && zutaten.includes("käse")) {
-ergebnis.innerHTML = "Rezept: Omelette mit Käse 🍳";
+else if(zutaten.includes("ei") && zutaten.includes("käse")){
+document.getElementById("ergebnis").innerHTML =
+"Rezept: Omelette mit Käse 🍳";
 }
 
-else if (zutaten.includes("brot") && zutaten.includes("käse")) {
-ergebnis.innerHTML = "Rezept: Käse-Sandwich 🥪";
+else if(zutaten.includes("brot") && zutaten.includes("käse")){
+document.getElementById("ergebnis").innerHTML =
+"Rezept: Käse-Sandwich 🥪";
 }
 
-else {
-ergebnis.innerHTML = "Leider habe ich noch kein Rezept dafür 😅";
+else{
+document.getElementById("ergebnis").innerHTML =
+"Leider habe ich noch kein Rezept dafür 😅";
 }
 
 }
