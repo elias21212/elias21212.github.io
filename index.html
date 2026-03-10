@@ -1,26 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Kühlschrank Rezept Finder</title>
+</head>
+
+<body>
+
+<h1>Was kann ich mit meinen Zutaten kochen?</h1>
+
+<p>Gib deine Zutaten ein:</p>
+
+<input type="text" id="zutaten" placeholder="z.B. Tomaten, Käse, Pasta">
+<button onclick="rezept()">Rezept suchen</button>
+
+<p id="ergebnis"></p>
+
 <script>
 function rezept() {
-let zutaten = document.getElementById("zutaten").value.toLowerCase();
+let zutaten = document.getElementById("zutaten").value;
 
-if(zutaten.includes("tomaten") && zutaten.includes("pasta")){
+if(zutaten.includes("Tomaten") && zutaten.includes("Pasta")){
 document.getElementById("ergebnis").innerHTML =
-"Rezept: Pasta mit Tomatensauce 🍝";
+"Du könntest Pasta mit Tomatensauce kochen!";
 }
-
-else if(zutaten.includes("ei") && zutaten.includes("käse")){
-document.getElementById("ergebnis").innerHTML =
-"Rezept: Omelette mit Käse 🍳";
-}
-
-else if(zutaten.includes("brot") && zutaten.includes("käse")){
-document.getElementById("ergebnis").innerHTML =
-"Rezept: Käse-Sandwich 🥪";
-}
-
 else{
 document.getElementById("ergebnis").innerHTML =
-"Leider habe ich noch kein Rezept dafür 😅";
+"Ich habe noch kein Rezept dafür, aber ich arbeite daran!";
 }
-
 }
 </script>
+
+</body>
+</html>
