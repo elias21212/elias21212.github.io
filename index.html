@@ -45,19 +45,27 @@ button:hover {
 
 .slide {
     background: white;
-    padding: 25px;
+    padding: 20px;
     margin: 20px auto;
     max-width: 500px;
     border-radius: 12px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     text-align: left;
 }
+
+.slide img {
+    width: 100%;
+    max-height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-top: 10px;
+}
 </style>
 </head>
 <body>
 
 <h1>School Helper 📚</h1>
-<p>Thema eingeben und Handout oder Präsentation erstellen</p>
+<p>Thema eingeben und Präsentation oder Handout erstellen</p>
 
 <input type="text" id="thema" placeholder="z.B. Klimawandel">
 <br>
@@ -69,18 +77,28 @@ button:hover {
 <script>
 function presentation() {
     let thema = document.getElementById("thema").value;
-    let slides = ["Einführung", "Wichtige Fakten", "Ursachen", "Auswirkungen", "Beispiele", "Lösungen", "Fazit"];
+
+    let slides = [
+        {title: "Einführung", text: `Kurze Einführung zum Thema ${thema}`, img: `https://source.unsplash.com/500x300/?${encodeURIComponent(thema)}`},
+        {title: "Wichtige Fakten", text: `Wichtige Fakten über ${thema}`, img: `https://source.unsplash.com/500x300/?facts,${encodeURIComponent(thema)}`},
+        {title: "Ursachen", text: `Die Ursachen von ${thema}`, img: `https://source.unsplash.com/500x300/?cause,${encodeURIComponent(thema)}`},
+        {title: "Auswirkungen", text: `Auswirkungen von ${thema}`, img: `https://source.unsplash.com/500x300/?effect,${encodeURIComponent(thema)}`},
+        {title: "Beispiele", text: `Beispiele zu ${thema}`, img: `https://source.unsplash.com/500x300/?example,${encodeURIComponent(thema)}`},
+        {title: "Lösungen", text: `Mögliche Lösungen für ${thema}`, img: `https://source.unsplash.com/500x300/?solution,${encodeURIComponent(thema)}`},
+        {title: "Fazit", text: `Zusammenfassung und Fazit zu ${thema}`, img: `https://source.unsplash.com/500x300/?summary,${encodeURIComponent(thema)}`}
+    ];
+
     let output = "";
 
-    for (let i = 0; i < slides.length; i++) {
+    slides.forEach((slide, i) => {
         output += `
         <div class="slide">
-            <h3>Folie ${i+1}</h3>
-            <h2>${slides[i]}</h2>
-            <p>Thema: ${thema}</p>
+            <h3>Folie ${i+1}: ${slide.title}</h3>
+            <p>${slide.text}</p>
+            <img src="${slide.img}" alt="${slide.title}">
         </div>
         `;
-    }
+    });
 
     document.getElementById("ergebnis").innerHTML = output;
 }
