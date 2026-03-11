@@ -13,10 +13,26 @@ let slides = [
 "Fazit"
 ];
 
-let output = "<h3>Präsentation: " + thema + "</h3>";
+let output = "";
 
 for (let i = 0; i < slides.length; i++) {
-output += "<br><b>Folie " + (i+1) + ":</b> " + slides[i] + " – " + thema;
+
+output += `
+<div style="
+border:1px solid #ccc;
+padding:20px;
+margin:20px;
+border-radius:10px;
+background:#f5f5f5;
+">
+
+<h3>Folie ${i+1}</h3>
+<h2>${slides[i]}</h2>
+<p>Thema: ${thema}</p>
+
+</div>
+`;
+
 }
 
 document.getElementById("ergebnis").innerHTML = output;
