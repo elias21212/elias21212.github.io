@@ -2,7 +2,7 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
-<title>School Helper 📚</title>
+<title>School Helper Präsentation</title>
 <style>
 body {
     font-family: Arial, sans-serif;
@@ -18,7 +18,7 @@ h1 {
 
 input {
     padding: 12px;
-    width: 250px;
+    width: 300px;
     font-size: 16px;
     border-radius: 8px;
     border: 1px solid #ccc;
@@ -64,20 +64,24 @@ button:hover {
 </head>
 <body>
 
-<h1>School Helper 📚</h1>
-<p>Thema eingeben und Präsentation oder Handout erstellen</p>
+<h1>School Helper Präsentation 📚</h1>
+<p>Gib ein Thema ein, um automatisch eine Präsentation zu erstellen</p>
 
 <input type="text" id="thema" placeholder="z.B. Klimawandel">
 <br>
-<button onclick="presentation()">Präsentation erstellen</button>
-<button onclick="handout()">Handout erstellen</button>
+<button onclick="generatePresentation()">Präsentation erstellen</button>
 
 <div id="ergebnis"></div>
 
 <script>
-function presentation() {
-    let thema = document.getElementById("thema").value;
+function generatePresentation() {
+    let thema = document.getElementById("thema").value.trim();
+    if(thema === "") {
+        alert("Bitte gib ein Thema ein!");
+        return;
+    }
 
+    // Folienvorlagen
     let slides = [
         {title: "Einführung", text: `Kurze Einführung zum Thema ${thema}`, img: `https://source.unsplash.com/500x300/?${encodeURIComponent(thema)}`},
         {title: "Wichtige Fakten", text: `Wichtige Fakten über ${thema}`, img: `https://source.unsplash.com/500x300/?facts,${encodeURIComponent(thema)}`},
@@ -89,7 +93,6 @@ function presentation() {
     ];
 
     let output = "";
-
     slides.forEach((slide, i) => {
         output += `
         <div class="slide">
@@ -100,29 +103,6 @@ function presentation() {
         `;
     });
 
-    document.getElementById("ergebnis").innerHTML = output;
-}
-
-function handout() {
-    let thema = document.getElementById("thema").value;
-    let output = `
-    <div class="slide">
-        <h2>Handout: ${thema}</h2>
-
-        <h3>Einleitung</h3>
-        <p>Kurze Erklärung zum Thema ${thema}.</p>
-
-        <h3>Hauptteil</h3>
-        <ul>
-            <li>Wichtige Fakten über ${thema}</li>
-            <li>Beispiele</li>
-            <li>Zusammenhänge</li>
-        </ul>
-
-        <h3>Fazit</h3>
-        <p>Warum ist ${thema} wichtig?</p>
-    </div>
-    `;
     document.getElementById("ergebnis").innerHTML = output;
 }
 </script>
