@@ -1,71 +1,113 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>School Helper 📚</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: #f2f4f8;
+    text-align: center;
+    margin: 0;
+    padding: 40px;
+}
+
+h1 {
+    color: #333;
+}
+
+input {
+    padding: 12px;
+    width: 250px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+button {
+    padding: 12px 20px;
+    margin: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    background: #4a6cf7;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #3a55d9;
+}
+
+#ergebnis {
+    margin-top: 40px;
+}
+
+.slide {
+    background: white;
+    padding: 25px;
+    margin: 20px auto;
+    max-width: 500px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    text-align: left;
+}
+</style>
+</head>
+<body>
+
+<h1>School Helper 📚</h1>
+<p>Thema eingeben und Handout oder Präsentation erstellen</p>
+
+<input type="text" id="thema" placeholder="z.B. Klimawandel">
+<br>
+<button onclick="presentation()">Präsentation erstellen</button>
+<button onclick="handout()">Handout erstellen</button>
+
 <div id="ergebnis"></div>
 
 <script>
-...DEIN SCRIPT...
+function presentation() {
+    let thema = document.getElementById("thema").value;
+    let slides = ["Einführung", "Wichtige Fakten", "Ursachen", "Auswirkungen", "Beispiele", "Lösungen", "Fazit"];
+    let output = "";
+
+    for (let i = 0; i < slides.length; i++) {
+        output += `
+        <div class="slide">
+            <h3>Folie ${i+1}</h3>
+            <h2>${slides[i]}</h2>
+            <p>Thema: ${thema}</p>
+        </div>
+        `;
+    }
+
+    document.getElementById("ergebnis").innerHTML = output;
+}
+
+function handout() {
+    let thema = document.getElementById("thema").value;
+    let output = `
+    <div class="slide">
+        <h2>Handout: ${thema}</h2>
+
+        <h3>Einleitung</h3>
+        <p>Kurze Erklärung zum Thema ${thema}.</p>
+
+        <h3>Hauptteil</h3>
+        <ul>
+            <li>Wichtige Fakten über ${thema}</li>
+            <li>Beispiele</li>
+            <li>Zusammenhänge</li>
+        </ul>
+
+        <h3>Fazit</h3>
+        <p>Warum ist ${thema} wichtig?</p>
+    </div>
+    `;
+    document.getElementById("ergebnis").innerHTML = output;
+}
 </script>
 
 </body>
 </html>
-<script>
-
-function presentation(){
-
-let thema = document.getElementById("thema").value;
-
-let slides = [
-"Einführung",
-"Wichtige Fakten",
-"Ursachen",
-"Auswirkungen",
-"Beispiele",
-"Lösungen",
-"Fazit"
-];
-
-let output="";
-
-for(let i=0;i<slides.length;i++){
-
-output += `
-<div class="slide">
-<h3>Folie ${i+1}</h3>
-<h2>${slides[i]}</h2>
-<p>Thema: ${thema}</p>
-</div>
-`;
-
-}
-
-document.getElementById("ergebnis").innerHTML = output;
-
-}
-
-function handout(){
-
-let thema = document.getElementById("thema").value;
-
-let output = `
-<div class="slide">
-<h2>Handout: ${thema}</h2>
-
-<h3>Einleitung</h3>
-<p>Kurze Erklärung zum Thema ${thema}.</p>
-
-<h3>Hauptteil</h3>
-<ul>
-<li>Wichtige Fakten über ${thema}</li>
-<li>Beispiele</li>
-<li>Zusammenhänge</li>
-</ul>
-
-<h3>Fazit</h3>
-<p>Warum ist ${thema} wichtig?</p>
-
-</div>
-`;
-
-document.getElementById("ergebnis").innerHTML = output;
-
-}
-
-</script>
