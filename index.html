@@ -1,62 +1,26 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>School Helper</title>
-</head>
-
-<body>
-
-<h1>School Helper 📚</h1>
-<p>Gib dein Thema ein und wähle, was du erstellen willst:</p>
-
-<input type="text" id="thema" placeholder="z.B. Klimawandel">
-
-<br><br>
-
-<button onclick="handout()">Handout erstellen</button>
-<button onclick="presentation()">Präsentation erstellen</button>
-
-<h2>Ergebnis:</h2>
-<p id="ergebnis"></p>
-
 <script>
-
-function handout() {
-
-let thema = document.getElementById("thema").value;
-
-document.getElementById("ergebnis").innerHTML =
-"<b>Handout zu: " + thema + "</b><br><br>" +
-
-"1. Einleitung<br>" +
-"- Was ist " + thema + "?<br>" +
-
-"2. Hauptteil<br>" +
-"- Wichtige Fakten über " + thema + "<br>" +
-"- Beispiele<br>" +
-
-"3. Fazit<br>" +
-"- Warum ist " + thema + " wichtig?";
-
-}
 
 function presentation() {
 
 let thema = document.getElementById("thema").value;
 
-document.getElementById("ergebnis").innerHTML =
-"<b>Präsentation zu: " + thema + "</b><br><br>" +
+let slides = [
+"Einführung",
+"Ursachen",
+"Auswirkungen",
+"Beispiele",
+"Lösungen",
+"Fazit"
+];
 
-"Folie 1: Titel – " + thema + "<br>" +
-"Folie 2: Einführung<br>" +
-"Folie 3: Wichtige Fakten<br>" +
-"Folie 4: Beispiele<br>" +
-"Folie 5: Fazit";
+let output = "<h3>Präsentation: " + thema + "</h3>";
+
+for (let i = 0; i < slides.length; i++) {
+output += "<br><b>Folie " + (i+1) + ":</b> " + slides[i] + " – " + thema;
+}
+
+document.getElementById("ergebnis").innerHTML = output;
 
 }
 
 </script>
-
-</body>
-</html>
