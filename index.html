@@ -1,40 +1,61 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
-  <title>Kühlschrank Rezept Finder</title>
+<meta charset="UTF-8">
+<title>School Helper</title>
 </head>
+
 <body>
 
-<h1>Was kann ich mit meinen Zutaten kochen?</h1>
+<h1>School Helper 📚</h1>
+<p>Gib dein Thema ein und wähle, was du erstellen willst:</p>
 
-<p>Gib deine Zutaten ein (z. B. Tomaten, Pasta):</p>
-<input type="text" id="zutaten" placeholder="Zutaten hier eingeben">
-<button onclick="rezept()">Rezept suchen</button>
+<input type="text" id="thema" placeholder="z.B. Klimawandel">
 
+<br><br>
+
+<button onclick="handout()">Handout erstellen</button>
+<button onclick="presentation()">Präsentation erstellen</button>
+
+<h2>Ergebnis:</h2>
 <p id="ergebnis"></p>
 
 <script>
-function rezept() {
-  let zutaten = document.getElementById("zutaten").value.toLowerCase().trim();
-  let ergebnis = document.getElementById("ergebnis");
 
-  // Zutaten in Wörter aufteilen (Komma oder Leerzeichen)
-  let zutatenListe = zutaten.split(/\s*,\s*|\s+/);
+function handout() {
 
-  if ((zutatenListe.includes("tomate") || zutatenListe.includes("tomaten")) && zutatenListe.includes("pasta")) {
-    ergebnis.innerHTML = "Rezept: Pasta mit Tomatensauce 🍝";
-  }
-  else if (zutatenListe.includes("ei") && zutatenListe.includes("käse")) {
-    ergebnis.innerHTML = "Rezept: Omelette mit Käse 🍳";
-  }
-  else if (zutatenListe.includes("brot") && zutatenListe.includes("käse")) {
-    ergebnis.innerHTML = "Rezept: Käse-Sandwich 🥪";
-  }
-  else {
-    ergebnis.innerHTML = "Leider habe ich noch kein Rezept dafür 😅";
-  }
+let thema = document.getElementById("thema").value;
+
+document.getElementById("ergebnis").innerHTML =
+"<b>Handout zu: " + thema + "</b><br><br>" +
+
+"1. Einleitung<br>" +
+"- Was ist " + thema + "?<br>" +
+
+"2. Hauptteil<br>" +
+"- Wichtige Fakten über " + thema + "<br>" +
+"- Beispiele<br>" +
+
+"3. Fazit<br>" +
+"- Warum ist " + thema + " wichtig?";
+
 }
+
+function presentation() {
+
+let thema = document.getElementById("thema").value;
+
+document.getElementById("ergebnis").innerHTML =
+"<b>Präsentation zu: " + thema + "</b><br><br>" +
+
+"Folie 1: Titel – " + thema + "<br>" +
+"Folie 2: Einführung<br>" +
+"Folie 3: Wichtige Fakten<br>" +
+"Folie 4: Beispiele<br>" +
+"Folie 5: Fazit";
+
+}
+
 </script>
 
 </body>
